@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101b3f">
+<title>Ekspedisi Hidrokarbon | Kimia XI</title>
+<style>
+:root{--navy:#101b3f;--blue:#3157d5;--cyan:#38c8d8;--gold:#ffca62;--ink:#17213c;--muted:#63708b;--paper:#f4f7ff;--white:#fff;--green:#168b69;--red:#d84d64;--line:#e2e8f5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#e2edff,transparent 35%),var(--paper);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:13px 18px;font-weight:800;background:linear-gradient(135deg,var(--blue),#6b55d9);color:white;box-shadow:0 8px 20px #3157d533}button:disabled{opacity:.45;cursor:not-allowed}
+a{color:#3157d5;font-weight:700}.wrap{max-width:1100px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:white;background:var(--navy);padding:14px 20px;border-radius:20px;margin-bottom:18px;box-shadow:0 12px 28px #101b3f22}.brand{font-weight:900;letter-spacing:.3px}.brand small{display:block;color:#a9c6ff;font-weight:600;font-size:11px}.pill{background:#ffffff1b;border:1px solid #ffffff30;border-radius:99px;padding:8px 12px;font-size:12px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#101b3f,#263c83 60%,#147c98);color:white;border-radius:28px;padding:clamp(24px,5vw,56px);min-height:360px;box-shadow:0 18px 50px #1d327b30}.hero:after{content:"";position:absolute;width:330px;height:330px;border:2px solid #ffffff20;border-radius:50%;right:-80px;top:-75px;box-shadow:0 0 0 35px #ffffff09,0 0 0 75px #ffffff08}.eyebrow{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.02;margin:14px 0}.hero p{max-width:650px;color:#dce7ff;font-size:17px;line-height:1.65}.hero .heroart{font-size:70px;position:absolute;right:7%;bottom:14%;filter:drop-shadow(0 12px 15px #0005)}
+.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;margin:18px 0;box-shadow:0 8px 24px #1a2d5b0b}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-size:13px;font-weight:800;margin:0 0 7px}.field input,.field select{width:100%;padding:14px;border:1px solid #d7deef;border-radius:12px;background:#fbfcff;color:var(--ink)}.muted{color:var(--muted);line-height:1.65}.hidden{display:none!important}
+.maphead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.progress{height:10px;background:#e8edfa;border-radius:99px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),#6c63e8);width:0;transition:.3s}
+.stagegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.stage{background:#f7f9ff;border:1px solid var(--line);border-radius:16px;padding:13px;text-align:left;box-shadow:none;color:var(--ink);display:flex;align-items:center;gap:10px}.stage .num{width:34px;height:34px;border-radius:12px;background:#e3eaff;color:#3157d5;display:grid;place-items:center;flex-shrink:0}.stage.done{border-color:#7ad5b6;background:#effbf6}.stage.done .num{background:#c9f3e2;color:#087c59}.stage.active{border:2px solid #5268e7;background:#eef1ff}.stage.locked{opacity:.48}
+h2{font-size:clamp(23px,4vw,32px);margin:4px 0 8px;color:var(--navy)}h3{color:var(--navy);margin:10px 0}.tag{display:inline-block;background:#edf2ff;color:#3854c7;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.6px}
+.lesson{line-height:1.72;font-size:15px}.lesson strong{color:#1c347b}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.mini{background:#f5f8ff;border:1px solid var(--line);padding:15px;border-radius:17px}.mini .emoji{font-size:30px}.visual{width:100%;max-height:230px;display:block;background:linear-gradient(135deg,#eff5ff,#f9fbff);border:1px solid var(--line);border-radius:18px;margin:12px 0}.video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:18px;background:#111;margin:12px 0}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.callout{border-left:4px solid var(--cyan);background:#effbff;padding:14px 16px;border-radius:0 14px 14px 0;margin:14px 0;line-height:1.6}
+.naming-section{border:1px solid var(--line);border-radius:20px;padding:18px;margin:22px 0;background:#fff}
+.naming-section h3{margin-top:12px}
+.example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.example-grid .mini{min-width:0}
+.molecule{max-height:190px;background:#f8faff}
+@media(max-width:700px){.example-grid{grid-template-columns:1fr}}
+
+.quizq{border:1px solid var(--line);border-radius:17px;padding:17px;margin:14px 0;background:#fff}.quizq legend{font-weight:850;line-height:1.5}.option{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:11px;margin:6px 0;background:#f7f9ff;cursor:pointer}.option:hover{background:#edf2ff}.option input{margin-top:4px;accent-color:#4058d6}.feedback{margin-top:10px;padding:10px;border-radius:10px;font-weight:700}.good{background:#e7f8f0;color:#08744f}.bad{background:#fff0f1;color:#b42d48}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-top:20px}.secondary{background:#edf1ff;color:#2947b5;box-shadow:none}.gold{background:linear-gradient(135deg,#f3a928,#ffcf6a);color:#392600}.small{font-size:12px}.result{font-size:20px;font-weight:900;color:var(--navy)}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid var(--line);padding:9px;text-align:left}th{background:#eff3ff}
+footer{text-align:center;color:#78839c;font-size:12px;padding:28px 10px}
+@media(max-width:700px){.wrap{padding:12px}.top{border-radius:15px}.hero{min-height:400px}.hero .heroart{right:20px;bottom:18px;font-size:54px;opacity:.65}.grid,.cards{grid-template-columns:1fr}.stagegrid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:16px}.stage{font-size:12px;padding:10px}.actions button{flex:1}}
+
+/* ===== OPTIMASI LAYAR HP ANDROID DAN IPHONE ===== */
+html { width:100%; min-width:320px; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body { min-width:320px; overflow-x:hidden; padding-bottom:env(safe-area-inset-bottom); }
+img, svg, video, iframe { max-width:100%; }
+.wrap { width:100%; }
+.panel, .quizq, .naming-section, .mini { min-width:0; }
+input, select, textarea, button { max-width:100%; }
+button, .stage, .option, select, input { touch-action:manipulation; }
+button { min-height:46px; }
+.field input, .field select { min-height:48px; font-size:16px; }
+.option { min-height:46px; line-height:1.45; }
+.lesson { overflow-wrap:anywhere; }
+table { display:block; width:100%; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:normal; }
+td, th { min-width:105px; }
+.video { width:100%; }
+img.visual, svg.visual { height:auto; object-fit:contain; }
+.hero { isolation:isolate; }
+.hero h1 { overflow-wrap:anywhere; }
+.stage { min-width:0; }
+.stage span, .stage strong { overflow-wrap:anywhere; }
+.actions { align-items:stretch; }
+.actions button { min-width:0; }
+#finalForm, #finalResult { min-width:0; }
+#finalForm select { width:100%; min-height:46px; font-size:16px; }
+#finalForm input[type="radio"], #finalForm input[type="checkbox"] {
+  width:20px; height:20px; flex:0 0 20px; accent-color:#4058d6;
+}
+@media (max-width: 700px) {
+  .wrap { padding: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right)); }
+  .top { padding:12px; gap:8px; align-items:flex-start; }
+  .brand { font-size:13px; line-height:1.35; }
+  .brand small { font-size:9px; letter-spacing:0; }
+  .pill { font-size:10px; padding:7px 9px; text-align:center; }
+  .hero { min-height:unset; padding:25px 19px 100px; border-radius:20px; }
+  .hero h1 { font-size:clamp(30px, 9vw, 43px); line-height:1.05; }
+  .hero p { font-size:15px; line-height:1.55; }
+  .hero .heroart { right:14px; bottom:8px; font-size:44px; }
+  .panel { margin:12px 0; padding:14px; border-radius:17px; }
+  h2 { font-size:22px; line-height:1.2; }
+  h3 { font-size:18px; line-height:1.25; }
+  .grid, .cards, .example-grid { grid-template-columns:minmax(0,1fr); }
+  .stagegrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .stage { padding:9px 8px; gap:7px; border-radius:13px; font-size:11px; }
+  .stage .num { width:29px; height:29px; border-radius:9px; font-size:12px; }
+  .quizq { padding:13px; margin:11px 0; border-radius:14px; }
+  .option { padding:11px 9px; gap:9px; font-size:14px; }
+  .naming-section { padding:13px; margin:14px 0; }
+  .mini { padding:12px; }
+  .lesson { font-size:14px; line-height:1.65; }
+  .tag { font-size:10px; }
+  .actions { gap:8px; }
+  .actions button { flex:1 1 100%; width:100%; padding:13px 12px; }
+  .result { font-size:18px; }
+  footer { padding:20px 8px; }
+}
+@media (max-width: 380px) {
+  .top { flex-direction:column; }
+  .pill { align-self:flex-start; }
+  .stagegrid { grid-template-columns:1fr; }
+  .hero { padding-left:15px; padding-right:15px; }
+  .quizq { padding:11px; }
+}
+@media (orientation:landscape) and (max-height:500px) {
+  .hero { min-height:unset; padding:20px 24px 70px; }
+  .hero .heroart { font-size:40px; bottom:8px; }
+}
+
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand">⚗️ LAB QUEST <small>MEDIA PETUALANGAN KIMIA • SMA NEGERI 1 SELAT</small></div><div class="pill" id="topStudent">MODE PETUALANG</div></header>
+<section id="welcome">
+ <div class="hero"><div class="eyebrow">Misi khusus • Kimia kelas XI</div><h1>EKSPEDISI<br>HIDROKARBON</h1><p>Jelajahi dunia atom karbon, pecahkan kode molekul, taklukkan tantangan IUPAC, dan temukan jejak hidrokarbon di sekitar Karangasem dan Desa Selat.</p><div class="heroart">🧪🌋</div></div>
+ <div class="panel"><h2>Siapkan identitas petualang</h2><p class="muted">Isi data diri sebelum memasuki laboratorium petualangan.</p>
+ <div class="grid"><div class="field"><label for="nama">Nama lengkap</label><input id="nama" placeholder="Masukkan nama lengkap" autocomplete="name"></div><div class="field"><label for="kelas">Kelas</label><select id="kelas"><option value="">Pilih kelas</option><option>XI-A</option><option>XI-B</option><option>XI-C</option><option>XI-D</option></select></div><div class="field"><label for="absen">Nomor absen</label><input id="absen" type="number" min="1" max="50" placeholder="Contoh: 12"></div></div>
+ <div class="actions"><span class="muted small">Progres tersimpan pada perangkat/browser ini.</span><button onclick="startGame()">🚀 MULAI PETUALANGAN</button></div></div>
+</section>
+<section id="game" class="hidden">
+ <div class="panel"><div class="maphead"><div><span class="tag">Peta ekspedisi</span><h2 id="hello">Halo, Petualang!</h2><div class="muted small" id="identity"></div></div><button class="secondary small" onclick="backHome()">Ganti identitas</button></div>
+ <div class="maphead"><b id="progressText">0 dari 9 tahap selesai</b><span class="small muted">Selesaikan berurutan untuk membuka gerbang berikutnya</span></div><div class="progress"><span id="progressBar"></span></div><div class="stagegrid" id="stageGrid"></div></div>
+ <main id="stageContent"></main>
+</section>
+<footer>Media pembelajaran interaktif • Kimia XI • SMA Negeri 1 Selat<br>Gunakan dengan pendampingan guru. Video memerlukan koneksi internet.</footer>
+</div>
+<script>
+// GANTI URL DI BAWAH INI dengan URL Web App Google Apps Script setelah deployment.
+const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbx_UTNQ02qAvt2ZfSr6fWDHPmm-rTZMMMsdvVt4yVD3tTDVZz1TTPgLxVDXCfItlfdK/exec";
+
+const stages=[
+{n:1,title:"Misteri Atom Karbon",type:"lesson",subtitle:"Pengertian hidrokarbon dan kekhasan atom karbon"},
+{n:2,title:"Gerbang Pemahaman I",type:"quiz",subtitle:"5 soal pilihan ganda"},
+{n:3,title:"Tiga Klan Hidrokarbon",type:"lesson",subtitle:"Alkana, alkena, dan alkuna"},
+{n:4,title:"Gerbang Pemahaman II",type:"quiz",subtitle:"3 soal pilihan ganda"},
+{n:5,title:"Kode Nama Molekul",type:"lesson",subtitle:"Struktur dan tata nama IUPAC"},
+{n:6,title:"Gerbang Pemahaman III",type:"quiz",subtitle:"5 soal pilihan ganda"},
+{n:7,title:"Jejak Hidrokarbon Selat",type:"lesson",subtitle:"Pemanfaatan dalam kehidupan sehari-hari dan lingkungan lokal"},
+{n:8,title:"Gerbang Pemahaman IV",type:"quiz",subtitle:"5 soal pilihan ganda"},
+{n:9,title:"Ujian Penjelajah",type:"final",subtitle:"Tes formatif 15 soal bervariasi"}
+];
+const videos={
+carbon:"IvXzQ7fS-OQ",
+alkane:"lP4uI6td_E4",
+naming:"lP4uI6td_E4",
+daily:"IvXzQ7fS-OQ"
+};
+const qs={
+2:[
+["Senyawa hidrokarbon tersusun atas unsur ...",["Karbon dan oksigen","Karbon dan hidrogen","Hidrogen dan nitrogen","Karbon dan nitrogen","Oksigen dan hidrogen"],1,"Hidrokarbon hanya mengandung karbon (C) dan hidrogen (H)."],
+["Nomor atom karbon adalah 6. Jumlah elektron valensinya ...",["2","3","4","6","8"],2,"Konfigurasi elektron C adalah 2,4 sehingga memiliki 4 elektron valensi."],
+["Kemampuan atom karbon berikatan dengan atom karbon lain disebut ...",["Polarisasi","Katenasi","Ionisasi","Sublimasi","Netralisasi"],1,"Katenasi adalah kemampuan membentuk rantai atau cincin C–C."],
+["Alasan karbon dapat membentuk banyak senyawa adalah ...",["Hanya membentuk ikatan ion","Memiliki 1 elektron valensi","Dapat membentuk empat ikatan kovalen dan rantai C","Tidak dapat berikatan dengan dirinya","Selalu bermuatan positif"],2,"Karbon tetravalen dan mampu berkatenasi."],
+["Pasangan unsur yang pasti terdapat dalam hidrokarbon adalah ...",["C dan H","C dan O","H dan Cl","C dan N","H dan S"],0,"Unsur penyusun hidrokarbon hanya C dan H."]
+],
+4:[
+["Senyawa dengan ikatan tunggal C–C saja termasuk ...",["Alkena","Alkuna","Alkana","Alkohol","Aldehida"],2,"Alkana merupakan hidrokarbon jenuh dengan ikatan tunggal."],
+["Ikatan rangkap dua C=C menjadi ciri ...",["Alkana","Alkena","Alkuna","Benzena saja","Alkohol"],1,"Alkena memiliki sedikitnya satu ikatan rangkap dua."],
+["Rumus umum alkena rantai terbuka dengan satu ikatan rangkap dua adalah ...",["CnH2n+2","CnH2n","CnH2n-2","CnHn","CnH2n+1"],1,"Untuk alkena rantai terbuka dengan satu C=C: CnH2n."]
+],
+6:[
+["Nama IUPAC CH3–CH2–CH2–CH3 adalah ...",["Propana","Butana","Pentana","2-metilpropana","Butena"],1,"Rantai utama empat atom karbon: butana."],
+["Nama CH3–CH(CH3)–CH2–CH3 adalah ...",["2-metilbutana","3-metilbutana","2-etilpropana","Pentana","2-metilpropena"],0,"Rantai terpanjang empat C; substituen metil pada C-2."],
+["Nama CH3–CH=CH–CH2–CH3 adalah ...",["Pentana","1-pentena","2-pentena","3-pentina","2-pentuna"],2,"Rantai lima C; ikatan rangkap dua mulai C-2."],
+["Senyawa CH≡C–CH2–CH3 dinamakan ...",["1-butuna","2-butuna","1-butena","Butana","2-metilpropuna"],0,"Rantai empat C dengan ikatan rangkap tiga pada C-1."],
+["Dalam penamaan IUPAC, rantai utama dipilih berdasarkan ...",["Rantai paling pendek","Rantai terpanjang yang memuat ikatan rangkap bila ada","Rantai dengan H terbanyak","Substituen terbanyak saja","Urutan abjad saja"],1,"Pilih rantai terpanjang yang mencakup ikatan rangkap; penomoran memberi lokan terkecil pada ikatan rangkap."]
+],
+8:[
+["Bahan bakar LPG rumah tangga terutama mengandung ...",["Propana dan butana","Etanol dan air","Metana murni saja","Karbon dioksida","Oksigen dan nitrogen"],0,"LPG umumnya campuran propana dan butana."],
+["Bensin merupakan campuran hidrokarbon yang digunakan sebagai ...",["Pelarut universal","Bahan bakar mesin bensin","Pupuk","Bahan pengawet","Pendingin alami"],1,"Bensin adalah campuran hidrokarbon untuk mesin pembakaran dalam."],
+["Lilin parafin tersusun terutama dari ...",["Hidrokarbon rantai panjang","Garam dapur","Protein","Logam","Karbohidrat"],0,"Parafin adalah campuran alkana rantai panjang."],
+["Pembakaran hidrokarbon sempurna menghasilkan ...",["CO dan jelaga saja","CO2 dan H2O","H2 dan O2","C dan H2","NH3 dan air"],1,"Pembakaran sempurna menghasilkan karbon dioksida dan air."],
+["Tindakan yang lebih bijak terkait penggunaan bahan bakar adalah ...",["Membiarkan mesin menyala saat berhenti lama","Membakar sampah plastik","Menghemat energi dan merawat kendaraan","Menggunakan bahan bakar sebanyak mungkin","Membuang oli ke tanah"],2,"Penghematan energi membantu mengurangi konsumsi bahan bakar dan emisi."]
+]};
+const finalQs=[
+ {t:"mc",q:"1. Rumus umum alkana rantai terbuka adalah ...",o:["CnH2n+2","CnH2n","CnH2n-2","CnH2n+1","CnHn"],a:0,e:"Alkana rantai terbuka memiliki rumus umum CnH2n+2."},
+ {t:"mc",q:"2. Atom karbon memiliki elektron valensi sebanyak ...",o:["1","2","3","4","6"],a:3,e:"Konfigurasi elektron karbon adalah 2,4 sehingga elektron valensinya 4."},
+ {t:"mc",q:"3. Nama IUPAC struktur CH3–CH2–CH2–CH3 adalah ...",o:["Propana","Butana","Pentana","1-butena","2-metilpropana"],a:1,e:"Rantai lurus dengan empat atom karbon dan ikatan tunggal dinamakan butana."},
+ {t:"mc",q:"4. Nama yang tepat untuk struktur CH2=CH–CH2–CH3 adalah ...",o:["Butana","2-butena","1-butena","1-butuna","2-butuna"],a:2,e:"Rantai utama memiliki empat atom C dan ikatan rangkap dua dimulai pada C-1, sehingga namanya 1-butena."},
+ {t:"mc",q:"5. Nama yang tepat untuk struktur CH3–C≡C–CH3 adalah ...",o:["1-butuna","2-butuna","1-butena","2-butena","Butana"],a:1,e:"Ikatan rangkap tiga dimulai pada karbon nomor 2, sehingga namanya 2-butuna."},
+ {t:"mc",q:"6. Nama IUPAC struktur CH3–CH(CH3)–CH3 adalah ...",o:["Butana","2-metilbutana","2-etilmetana","3-metilpropana","2-metilpropana"],a:4,e:"Rantai utama terpanjang terdiri atas tiga atom C dengan cabang metil pada C-2: 2-metilpropana."},
+ {t:"complex",q:"7. Pilih semua pernyataan yang benar tentang alkana.",o:["Semua ikatan antaratom karbonnya tunggal","Termasuk hidrokarbon jenuh","Memiliki ikatan rangkap dua sebagai ciri utama","Rumus umum rantai terbuka CnH2n","Selalu mengandung oksigen"],a:[0,1],e:"Alkana merupakan hidrokarbon jenuh dan semua ikatan antaratom karbonnya tunggal."},
+ {t:"complex",q:"8. Pilih semua pernyataan yang benar tentang alkena.",o:["Memiliki sekurang-kurangnya satu ikatan C=C","Akhiran nama golongannya -ena","Rumus umum rantai terbuka dengan satu C=C adalah CnH2n","Memiliki ikatan C≡C sebagai ciri utama","Termasuk hidrokarbon jenuh"],a:[0,1,2],e:"Alkena memiliki ikatan rangkap dua C=C, akhiran -ena, dan rumus umum CnH2n untuk rantai terbuka dengan satu ikatan rangkap."},
+ {t:"complex",q:"9. Pilih semua pernyataan yang benar tentang alkuna.",o:["Memiliki sekurang-kurangnya satu ikatan C≡C","Akhiran nama golongannya -una","Rumus umum rantai terbuka dengan satu C≡C adalah CnH2n-2","Ikatan rangkap tiganya harus menjadi bagian rantai utama saat penamaan","Memiliki ikatan C=C sebagai ciri khas"],a:[0,1,2,3],e:"Alkuna memiliki ikatan rangkap tiga, akhiran -una, dan rantai utama harus memuat ikatan rangkap tiga."},
+ {t:"tf",q:"10. Tentukan benar atau salah untuk setiap pernyataan tentang struktur karbon.",o:["Atom karbon memiliki empat elektron valensi.","Atom karbon dapat membentuk ikatan kovalen dengan atom karbon lain.","Karbon hanya dapat membentuk satu ikatan kovalen."],a:[true,true,false],e:"Karbon memiliki empat elektron valensi dan dapat membentuk hingga empat ikatan kovalen."},
+ {t:"tf",q:"11. Tentukan benar atau salah untuk setiap pernyataan tentang tata nama.",o:["Rantai utama alkena harus memuat ikatan rangkap dua.","Penomoran alkena dimulai dari ujung yang paling dekat dengan ikatan rangkap dua.","Nama CH2=CH–CH2–CH3 adalah 2-butena."],a:[true,true,false],e:"Struktur CH2=CH–CH2–CH3 memiliki ikatan rangkap pada C-1 sehingga namanya 1-butena."},
+ {t:"tf",q:"12. Tentukan benar atau salah untuk setiap pernyataan berikut.",o:["Alkana memiliki ikatan tunggal C–C.","Alkena memiliki sekurang-kurangnya satu ikatan rangkap dua C=C.","Alkuna memiliki sekurang-kurangnya satu ikatan rangkap tiga C≡C."],a:[true,true,true],e:"Ketiga pernyataan sesuai dengan ciri ikatan masing-masing golongan hidrokarbon."},
+ {t:"match",q:"13. Pasangkan awalan nama rantai karbon dengan jumlah atom karbon yang tepat.",pairs:[["Met-","1 atom C"],["Et-","2 atom C"],["Prop-","3 atom C"],["But-","4 atom C"],["Pent-","5 atom C"]],a:[0,1,2,3,4],e:"Met-, et-, prop-, but-, dan pent- menyatakan jumlah atom karbon 1 sampai 5."},
+ {t:"match",q:"14. Pasangkan rumus struktur dengan nama senyawa yang tepat.",pairs:[["CH4","Metana"],["CH3–CH3","Etana"],["CH2=CH2","Etena"],["HC≡CH","Etuna"],["CH3–CH2–CH3","Propana"]],a:[0,1,2,3,4],e:"Nama ditentukan oleh jumlah atom karbon dan jenis ikatan pada struktur."},
+ {t:"match",q:"15. Pasangkan setiap golongan hidrokarbon dengan ciri ikatan khasnya.",pairs:[["Alkana","Memiliki ikatan tunggal C–C; akhiran -ana"],["Alkena","Memiliki ikatan rangkap dua C=C; akhiran -ena"],["Alkuna","Memiliki ikatan rangkap tiga C≡C; akhiran -una"]],a:[0,1,2],e:"Alkana memiliki ikatan tunggal, alkena memiliki ikatan rangkap dua, dan alkuna memiliki ikatan rangkap tiga."}
+];
+let student=null,progress=0,quizAnswers={},finalAnswers={};
+function startGame(){let n=document.getElementById('nama').value.trim(),k=document.getElementById('kelas').value,a=document.getElementById('absen').value;if(!n||!k||!a||+a<1){alert('Lengkapi nama, kelas, dan nomor absen terlebih dahulu.');return}student={nama:n,kelas:k,absen:a};let key=saveKey();let saved=JSON.parse(localStorage.getItem(key)||'{}');progress=saved.progress||0;document.getElementById('welcome').classList.add('hidden');document.getElementById('game').classList.remove('hidden');document.getElementById('topStudent').textContent=n+' • '+k;document.getElementById('hello').textContent='Selamat datang, '+n+'!';document.getElementById('identity').textContent=k+' • Absen '+a;renderMap();openStage(Math.min(progress,8)+1)}
+function saveKey(){return 'hidrokarbonQuest_'+(student?student.kelas+'_'+student.absen+'_'+student.nama.toLowerCase().replace(/\s+/g,'_'):'guest')}
+function save(){localStorage.setItem(saveKey(),JSON.stringify({progress,quizAnswers,finalAnswers,student}))}
+function backHome(){document.getElementById('game').classList.add('hidden');document.getElementById('welcome').classList.remove('hidden')}
+function renderMap(){document.getElementById('progressText').textContent=progress+' dari 9 tahap selesai';document.getElementById('progressBar').style.width=(progress/9*100)+'%';document.getElementById('stageGrid').innerHTML=stages.map(s=>{let done=s.n<=progress,locked=s.n>progress+1;return `<button class="stage ${done?'done':''} ${!done&&!locked?'active':''} ${locked?'locked':''}" ${locked?'disabled':''} onclick="openStage(${s.n})"><span class="num">${done?'✓':locked?'🔒':s.n}</span><span><b>Tahap ${s.n}</b><br><span class="small">${s.title}</span></span></button>`}).join('')}
+function openStage(n){if(n>progress+1){alert('Selesaikan tahap sebelumnya terlebih dahulu.');return}let s=stages[n-1];let el=document.getElementById('stageContent');el.innerHTML=`<div class="panel"><span class="tag">Tahap ${s.n} • ${s.type==='lesson'?'Zona eksplorasi':s.type==='final'?'Ujian akhir':'Tantangan'}</span><h2>${s.title}</h2><p class="muted">${s.subtitle}</p>${s.type==='lesson'?lessonHTML(n):s.type==='quiz'?quizHTML(n):finalHTML()}<div class="actions"><span class="muted small">Tahap ${n} dari 9</span>${s.type==='lesson'?`<button onclick="completeLesson(${n})">Tandai materi selesai →</button>`:''}</div></div>`;renderMap();window.scrollTo({top:0,behavior:'smooth'})}
+function vid(id,title){return `<h3>🎬 Video pembelajaran: ${title}</h3><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="muted small">Jika video tidak tampil, buka <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${id}">video di YouTube</a>. Video memerlukan internet.</p>`}
+function lessonHTML(n){
+if(n===1)return `<div class="lesson"><h3>🎯 Misi belajar</h3><ul><li>Menjelaskan pengertian senyawa hidrokarbon berdasarkan unsur penyusunnya.</li><li>Mengidentifikasi kekhasan atom karbon yang menyebabkan terbentuknya beragam hidrokarbon.</li></ul><div class="callout"><b>Kasus pembuka:</b> Mengapa gas LPG, bensin, lilin, dan plastik dapat memiliki sifat berbeda padahal banyak di antaranya tersusun dari karbon dan hidrogen?</div><h3>1. Apa itu hidrokarbon?</h3><p>Senyawa hidrokarbon adalah senyawa yang hanya tersusun atas dua jenis unsur, yaitu <strong>karbon (C) dan hidrogen (H)</strong>. Contohnya metana (CH₄), etana (C₂H₆), dan propana (C₃H₈).</p><svg class="visual" viewBox="0 0 700 210"><rect x="20" y="20" width="660" height="170" rx="20" fill="#eef4ff"/><circle cx="350" cy="95" r="42" fill="#344fc1"/><text x="350" y="104" text-anchor="middle" font-size="30" fill="white" font-weight="bold">C</text><circle cx="235" cy="95" r="28" fill="#38b8d2"/><text x="235" y="104" text-anchor="middle" font-size="24" fill="white">H</text><circle cx="465" cy="95" r="28" fill="#38b8d2"/><text x="465" y="104" text-anchor="middle" font-size="24" fill="white">H</text><path d="M263 95H308M392 95H437" stroke="#263c83" stroke-width="7"/><text x="350" y="165" text-anchor="middle" font-size="17" fill="#24345f">Ilustrasi ikatan kovalen C–H pada molekul sederhana</text></svg><h3>2. Mengapa atom karbon istimewa?</h3><div class="cards"><div class="mini"><div class="emoji">🔗</div><b>Tetravalen</b><p>Karbon memiliki 4 elektron valensi sehingga dapat membentuk hingga empat ikatan kovalen.</p></div><div class="mini"><div class="emoji">🧬</div><b>Katenasi</b><p>Karbon dapat berikatan dengan sesama karbon membentuk rantai panjang, bercabang, atau cincin.</p></div><div class="mini"><div class="emoji">🧩</div><b>Ikatan beragam</b><p>Karbon dapat membentuk ikatan tunggal, rangkap dua, dan rangkap tiga.</p></div></div><p>Karbon juga relatif kecil sehingga ikatan kovalen C–C cukup kuat. Kombinasi sifat tersebut menghasilkan sangat banyak struktur senyawa.</p><div class="callout"><b>Ingat!</b> Hidrokarbon = hanya C dan H. Senyawa seperti etanol (C₂H₅OH) bukan hidrokarbon murni karena mengandung oksigen.</div>${vid(videos.carbon,'Pengertian hidrokarbon dan kekhasan atom karbon')}</div>`;
+if(n===3)return `<div class="lesson"><h3>🎯 Misi belajar</h3><p>Membedakan alkana, alkena, dan alkuna berdasarkan jenis ikatan serta rumus umumnya.</p><div class="cards"><div class="mini"><div class="emoji">🟦</div><b>ALKANA</b><p>Semua ikatan C–C tunggal; hidrokarbon jenuh.</p><h3>CₙH₂ₙ₊₂</h3><p>Contoh: etana C₂H₆</p></div><div class="mini"><div class="emoji">🟩</div><b>ALKENA</b><p>Memiliki minimal satu ikatan C=C; tak jenuh.</p><h3>CₙH₂ₙ</h3><p>Contoh: etena C₂H₄</p></div><div class="mini"><div class="emoji">🟧</div><b>ALKUNA</b><p>Memiliki minimal satu ikatan C≡C; tak jenuh.</p><h3>CₙH₂ₙ₋₂</h3><p>Contoh: etuna C₂H₂</p></div></div><svg class="visual" viewBox="0 0 720 180"><rect x="10" y="15" width="220" height="150" rx="16" fill="#e5edff"/><rect x="250" y="15" width="220" height="150" rx="16" fill="#e4f8ef"/><rect x="490" y="15" width="220" height="150" rx="16" fill="#fff1df"/><g fill="#20366f" font-size="18" font-weight="bold" text-anchor="middle"><text x="120" y="48">ALKANA</text><text x="360" y="48">ALKENA</text><text x="600" y="48">ALKUNA</text></g><g stroke="#263c83" stroke-width="5"><path d="M70 95H170"/><path d="M310 90H410M310 99H410"/><path d="M550 85H650M550 95H650M550 105H650"/></g><g fill="#20366f" font-size="15" text-anchor="middle"><text x="120" y="137">C—C</text><text x="360" y="137">C=C</text><text x="600" y="137">C≡C</text></g></svg><h3>Bandingkan cepat</h3><table><tr><th>Golongan</th><th>Ikatan khas</th><th>Jenuh?</th><th>Rumus umum rantai terbuka*</th></tr><tr><td>Alkana</td><td>C–C</td><td>Jenuh</td><td>CₙH₂ₙ₊₂</td></tr><tr><td>Alkena</td><td>C=C</td><td>Tak jenuh</td><td>CₙH₂ₙ</td></tr><tr><td>Alkuna</td><td>C≡C</td><td>Tak jenuh</td><td>CₙH₂ₙ₋₂</td></tr></table><p class="muted small">*Berlaku untuk rantai terbuka dengan satu ikatan rangkap pada alkena/alkuna dan tanpa cincin.</p><div class="callout">Cara mengingat: <b>ana = tunggal, ena = rangkap dua, una = rangkap tiga.</b></div>${vid(videos.alkane,'Pengenalan alkana, alkena, dan alkuna')}</div>`;
+if(n===5)return `<div class="lesson">
+<h3>🎯 Misi belajar</h3>
+<p>Pelajari tata nama <b>alkana, alkena, dan alkuna secara terpisah</b>. Setiap golongan memiliki langkah penamaan dan contoh struktur yang berbeda.</p>
+<div class="callout"><b>Catatan penulisan nama:</b> Materi ini menggunakan format yang diminta, yaitu <b>1-butena</b> dan <b>2-butena</b> (bukan butan-1-ena). Angka menunjukkan posisi ikatan rangkap atau cabang pada rantai karbon.</div>
+
+<section class="naming-section">
+<span class="tag">Bagian 1</span><h3>🟦 Tata Nama Alkana</h3>
+<p>Alkana adalah hidrokarbon jenuh yang seluruh ikatan antaratom karbonnya berupa ikatan tunggal (C–C). Akhiran nama alkana adalah <b>-ana</b>.</p>
+<div class="callout"><b>Rumus umum alkana rantai terbuka:</b> C<sub>n</sub>H<sub>2n+2</sub></div>
+<h3>Langkah-langkah penamaan alkana</h3>
+<ol>
+<li><b>Pilih rantai karbon terpanjang</b> sebagai rantai utama.</li>
+<li><b>Nomori rantai utama</b> dari ujung yang paling dekat dengan cabang agar nomor cabang sekecil mungkin.</li>
+<li><b>Tentukan nama cabang.</b> Cabang –CH<sub>3</sub> disebut metil, sedangkan –CH<sub>2</sub>–CH<sub>3</sub> disebut etil.</li>
+<li><b>Tulis nama senyawa:</b> nomor cabang – nama cabang – nama rantai utama. Gunakan tanda hubung antara angka dan kata.</li>
+</ol>
+<div class="example-grid">
+<div class="mini"><b>Contoh 1 — Butana</b>
+<svg class="visual molecule" viewBox="0 0 620 150" role="img" aria-label="Struktur butana, CH3 terhubung dengan CH2, CH2, CH3 melalui ikatan tunggal">
+<g stroke="#253c83" stroke-width="5" stroke-linecap="round"><path d="M105 68H235M255 68H385M405 68H535"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="95" y="58">CH₃</text><text x="245" y="58">CH₂</text><text x="395" y="58">CH₂</text><text x="545" y="58">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="95" y="112">C-1</text><text x="245" y="112">C-2</text><text x="395" y="112">C-3</text><text x="545" y="112">C-4</text></g></svg>
+<p><b>Rumus struktur:</b> CH₃–CH₂–CH₂–CH₃</p>
+<p>Rantai utama memiliki 4 atom C dan tidak memiliki cabang. Awalan 4 C adalah <b>but-</b>, dengan akhiran alkana <b>-ana</b>, sehingga namanya <b>butana</b>.</p></div>
+<div class="mini"><b>Contoh 2 — 2-metilpropana</b>
+<svg class="visual molecule" viewBox="0 0 620 190" role="img" aria-label="Struktur 2-metilpropana dengan rantai utama propana dan cabang metil pada karbon nomor dua">
+<g stroke="#253c83" stroke-width="5" stroke-linecap="round"><path d="M115 105H285M305 105H475M295 95V38"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="105" y="95">CH₃</text><text x="295" y="95">CH</text><text x="485" y="95">CH₃</text><text x="295" y="29">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="105" y="145">C-1</text><text x="295" y="145">C-2</text><text x="485" y="145">C-3</text><text x="365" y="30">cabang metil</text></g></svg>
+<p><b>Rumus struktur:</b> CH₃–CH(CH₃)–CH₃</p>
+<p>Rantai terpanjang memiliki 3 atom C (propana). Terdapat cabang metil pada C nomor 2. Namanya <b>2-metilpropana</b>.</p></div>
+</div>
+</section>
+
+<section class="naming-section">
+<span class="tag">Bagian 2</span><h3>🟩 Tata Nama Alkena</h3>
+<p>Alkena adalah hidrokarbon tak jenuh yang memiliki sekurang-kurangnya satu ikatan rangkap dua (C=C). Akhiran nama alkena adalah <b>-ena</b>.</p>
+<div class="callout"><b>Rumus umum alkena rantai terbuka dengan satu ikatan rangkap dua:</b> C<sub>n</sub>H<sub>2n</sub></div>
+<h3>Langkah-langkah penamaan alkena</h3>
+<ol>
+<li><b>Pilih rantai karbon terpanjang yang memuat ikatan rangkap dua.</b> Ikatan C=C harus menjadi bagian dari rantai utama.</li>
+<li><b>Nomori rantai dari ujung yang paling dekat dengan ikatan rangkap dua.</b> Posisi ikatan rangkap mendapat nomor sekecil mungkin.</li>
+<li><b>Tentukan nama rantai utama</b> berdasarkan jumlah atom C, lalu gunakan akhiran <b>-ena</b>.</li>
+<li><b>Tuliskan posisi ikatan rangkap</b> di depan nama rantai utama, misalnya 1-butena atau 2-butena. Jika ada cabang, tulis posisi dan nama cabang di depan nama utama.</li>
+</ol>
+<div class="example-grid">
+<div class="mini"><b>Contoh 1 — 1-butena</b>
+<svg class="visual molecule" viewBox="0 0 620 150" role="img" aria-label="Struktur 1-butena, CH2 sama dengan CH lalu CH2 dan CH3">
+<g stroke="#253c83" stroke-width="5" stroke-linecap="round"><path d="M105 63H235M105 75H235M255 69H385M405 69H535"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="95" y="53">CH₂</text><text x="245" y="53">CH</text><text x="395" y="53">CH₂</text><text x="545" y="53">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="95" y="112">C-1</text><text x="245" y="112">C-2</text><text x="395" y="112">C-3</text><text x="545" y="112">C-4</text></g></svg>
+<p><b>Rumus struktur:</b> CH₂=CH–CH₂–CH₃</p>
+<p>Rantai utama memiliki 4 atom C (but-). Penomoran dimulai dari ujung terdekat ikatan rangkap, sehingga C=C mulai pada C-1. Akhiran alkena adalah -ena. Nama: <b>1-butena</b>.</p></div>
+<div class="mini"><b>Contoh 2 — 2-butena</b>
+<svg class="visual molecule" viewBox="0 0 620 150" role="img" aria-label="Struktur 2-butena, CH3, CH, CH, CH3 dengan ikatan rangkap dua antara karbon dua dan tiga">
+<g stroke="#253c83" stroke-width="5" stroke-linecap="round"><path d="M105 69H235M255 63H385M255 75H385M405 69H535"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="95" y="53">CH₃</text><text x="245" y="53">CH</text><text x="395" y="53">CH</text><text x="545" y="53">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="95" y="112">C-1</text><text x="245" y="112">C-2</text><text x="395" y="112">C-3</text><text x="545" y="112">C-4</text></g></svg>
+<p><b>Rumus struktur:</b> CH₃–CH=CH–CH₃</p>
+<p>Rantai utama memiliki 4 atom C. Ikatan rangkap berada antara C-2 dan C-3, sehingga dimulai pada C-2. Nama: <b>2-butena</b>.</p></div>
+</div>
+</section>
+
+<section class="naming-section">
+<span class="tag">Bagian 3</span><h3>🟧 Tata Nama Alkuna</h3>
+<p>Alkuna adalah hidrokarbon tak jenuh yang memiliki sekurang-kurangnya satu ikatan rangkap tiga (C≡C). Akhiran nama alkuna adalah <b>-una</b>.</p>
+<div class="callout"><b>Rumus umum alkuna rantai terbuka dengan satu ikatan rangkap tiga:</b> C<sub>n</sub>H<sub>2n-2</sub></div>
+<h3>Langkah-langkah penamaan alkuna</h3>
+<ol>
+<li><b>Pilih rantai karbon terpanjang yang memuat ikatan rangkap tiga.</b></li>
+<li><b>Nomori rantai dari ujung yang paling dekat dengan ikatan rangkap tiga</b> agar posisi ikatan rangkap tiga mendapat nomor terkecil.</li>
+<li><b>Tentukan nama rantai utama</b> sesuai jumlah atom C dan gunakan akhiran <b>-una</b>.</li>
+<li><b>Tuliskan nomor posisi ikatan rangkap tiga</b> di depan nama rantai utama, misalnya 1-butuna atau 2-butuna. Jika ada cabang, cantumkan posisi dan nama cabang.</li>
+</ol>
+<div class="example-grid">
+<div class="mini"><b>Contoh 1 — 1-butuna</b>
+<svg class="visual molecule" viewBox="0 0 620 150" role="img" aria-label="Struktur 1-butuna, HC rangkap tiga C lalu CH2 dan CH3">
+<g stroke="#253c83" stroke-width="4" stroke-linecap="round"><path d="M105 59H235M105 69H235M105 79H235M255 69H385M405 69H535"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="95" y="53">HC</text><text x="245" y="53">C</text><text x="395" y="53">CH₂</text><text x="545" y="53">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="95" y="112">C-1</text><text x="245" y="112">C-2</text><text x="395" y="112">C-3</text><text x="545" y="112">C-4</text></g></svg>
+<p><b>Rumus struktur:</b> HC≡C–CH₂–CH₃</p>
+<p>Rantai utama memiliki 4 atom C (but-). Ikatan rangkap tiga dimulai pada C-1. Akhiran alkuna adalah -una. Nama: <b>1-butuna</b>.</p></div>
+<div class="mini"><b>Contoh 2 — 2-butuna</b>
+<svg class="visual molecule" viewBox="0 0 620 150" role="img" aria-label="Struktur 2-butuna, CH3, C rangkap tiga C, CH3">
+<g stroke="#253c83" stroke-width="4" stroke-linecap="round"><path d="M105 69H235M255 59H385M255 69H385M255 79H385M405 69H535"/></g>
+<g fill="#17213c" font-size="24" font-weight="700" text-anchor="middle"><text x="95" y="53">CH₃</text><text x="245" y="53">C</text><text x="395" y="53">C</text><text x="545" y="53">CH₃</text></g>
+<g fill="#63708b" font-size="15" text-anchor="middle"><text x="95" y="112">C-1</text><text x="245" y="112">C-2</text><text x="395" y="112">C-3</text><text x="545" y="112">C-4</text></g></svg>
+<p><b>Rumus struktur:</b> CH₃–C≡C–CH₃</p>
+<p>Rantai utama memiliki 4 atom C. Ikatan rangkap tiga berada antara C-2 dan C-3, sehingga dimulai pada C-2. Nama: <b>2-butuna</b>.</p></div>
+</div>
+</section>
+
+<h3>Ringkasan perbedaan tata nama</h3>
+<table><tr><th>Golongan</th><th>Ikatan khas</th><th>Akhiran</th><th>Contoh nama</th></tr>
+<tr><td>Alkana</td><td>C–C tunggal</td><td>-ana</td><td>butana</td></tr>
+<tr><td>Alkena</td><td>C=C rangkap dua</td><td>-ena</td><td>1-butena, 2-butena</td></tr>
+<tr><td>Alkuna</td><td>C≡C rangkap tiga</td><td>-una</td><td>1-butuna, 2-butuna</td></tr></table>
+<div class="callout"><b>Trik cepat:</b> Cari rantai utama terlebih dahulu. Untuk alkena dan alkuna, pastikan rantai utama memuat ikatan rangkap, lalu mulai penomoran dari ujung yang paling dekat dengan ikatan tersebut.</div>
+${vid(videos.naming,'Struktur dan tata nama hidrokarbon')}
+</div>`;
+return `<div class="lesson"><h3>🎯 Misi belajar</h3><p>Menghubungkan konsep hidrokarbon dengan benda, energi, dan aktivitas masyarakat di sekitar Karangasem dan Desa Selat.</p><div class="cards"><div class="mini"><div class="emoji">🔥</div><b>LPG rumah tangga</b><p>Propana dan butana menjadi bahan bakar untuk memasak.</p></div><div class="mini"><div class="emoji">🛵</div><b>Bensin kendaraan</b><p>Campuran hidrokarbon cair digunakan pada sepeda motor dan mobil.</p></div><div class="mini"><div class="emoji">🕯️</div><b>Lilin parafin</b><p>Alkana rantai panjang menjadi bahan lilin.</p></div><div class="mini"><div class="emoji">🛣️</div><b>Aspal jalan</b><p>Fraksi berat pengolahan minyak bumi dimanfaatkan sebagai bahan perkerasan jalan.</p></div><div class="mini"><div class="emoji">🧴</div><b>Plastik dan kemasan</b><p>Banyak polimer dibuat dari bahan baku petrokimia yang berasal dari hidrokarbon.</p></div><div class="mini"><div class="emoji">🌾</div><b>Aktivitas pertanian</b><p>Bahan bakar mesin pengangkut, pompa, dan alat pertanian dapat berasal dari minyak bumi.</p></div></div><h3>Jejak di Karangasem dan Desa Selat</h3><p>Dalam kehidupan masyarakat Karangasem—termasuk wilayah Desa Selat—contoh yang mudah diamati adalah penggunaan LPG untuk memasak, bensin untuk sepeda motor/transportasi menuju pasar dan sekolah, solar untuk sebagian kendaraan atau mesin, serta aspal pada jalan penghubung antardesa. Ini merupakan <b>contoh pemanfaatan yang relevan dengan aktivitas setempat</b>, bukan klaim bahwa bahan bakar tersebut diproduksi di Desa Selat.</p><svg class="visual" viewBox="0 0 720 210"><rect x="12" y="12" width="696" height="186" rx="20" fill="#edf5ff"/><path d="M25 155L155 70L255 130L390 45L520 120L690 55V190H25Z" fill="#8cc5a5"/><path d="M20 170Q180 135 350 170T700 160" fill="none" stroke="#596c88" stroke-width="22"/><path d="M20 170Q180 135 350 170T700 160" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="12 12"/><g font-size="32"><text x="80" y="125">🏠</text><text x="300" y="115">🛵</text><text x="540" y="110">🌾</text></g><text x="360" y="25" font-size="16" text-anchor="middle" fill="#20366f" font-weight="bold">Ilustrasi konteks kehidupan sehari-hari di wilayah Selat</text></svg><div class="callout"><b>Refleksi lingkungan:</b> Pembakaran bahan bakar menghasilkan CO₂; pembakaran tidak sempurna dapat menghasilkan CO dan jelaga. Hemat energi, rawat kendaraan, gunakan transportasi bersama bila memungkinkan, dan jangan membakar sampah plastik.</div>${vid(videos.daily,'Hidrokarbon dan pemanfaatannya dalam kehidupan')}</div>`;
+}
+function completeLesson(n){if(n!==progress+1)return;progress=n;save();renderMap();if(n<9)openStage(n+1);else openStage(9)}
+function quizHTML(n){let arr=qs[n];return `<form id="quizForm" onsubmit="return false">${arr.map((q,i)=>`<fieldset class="quizq"><legend>${i+1}. ${q[0]}</legend>${q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}<div id="fb${i}"></div></fieldset>`).join('')}<div class="actions"><span class="muted small">Jawab semua soal. Nilai minimal 60 untuk membuka tahap berikutnya.</span><button onclick="gradeQuiz(${n})">Periksa jawaban</button></div><div id="quizResult"></div></form>`}
+function gradeQuiz(n){let arr=qs[n],score=0,missing=false;arr.forEach((q,i)=>{let v=document.querySelector(`input[name=q${i}]:checked`);if(!v)missing=true;let ok=v&&+v.value===q[2];if(ok)score++;document.getElementById('fb'+i).innerHTML=`<div class="feedback ${ok?'good':'bad'}">${ok?'✓ Tepat!':'✗ Belum tepat.'} ${q[3]}</div>`});if(missing){document.getElementById('quizResult').innerHTML='<p class="feedback bad">Masih ada soal yang belum dijawab. Lengkapi semua jawaban, lalu periksa kembali.</p>';return}let pct=Math.round(score/arr.length*100);document.getElementById('quizResult').innerHTML=`<div class="panel"><div class="result">Skor latihan: ${score}/${arr.length} (${pct})</div><p>${pct>=60?'Gerbang terbuka! Kamu dapat melanjutkan.':'Belum mencapai 60. Pelajari pembahasan, ubah jawaban, lalu coba lagi.'}</p>${pct>=60?'<button onclick="passStage('+n+')">Lanjut ke tahap berikutnya →</button>':'<button class="secondary" onclick="openStage('+n+')">Coba kembali</button>'}</div>`}
+function passStage(n){if(n===progress+1){progress=n;save();renderMap();openStage(n+1)}}
+function finalHTML(){return `<div class="panel" style="background:#f4f8ff;border:1px solid #cbd8f5"><h3>Wacana: Hidrokarbon dalam Kehidupan Sehari-hari</h3><p>Karbon merupakan unsur yang dapat berikatan dengan sesama atom karbon dan membentuk rantai. Bersama hidrogen, karbon menyusun senyawa hidrokarbon yang banyak dimanfaatkan sebagai bahan bakar maupun bahan baku industri. Berdasarkan jenis ikatan antaratom karbon, hidrokarbon rantai terbuka dibedakan menjadi tiga golongan. Alkana memiliki ikatan tunggal C–C, alkena memiliki sekurang-kurangnya satu ikatan rangkap dua C=C, sedangkan alkuna memiliki sekurang-kurangnya satu ikatan rangkap tiga C≡C. Perbedaan jenis ikatan tersebut juga memengaruhi rumus umum dan tata nama senyawanya. Contohnya, metana dan propana termasuk alkana, etena termasuk alkena, sedangkan etuna termasuk alkuna. Dalam tata nama, golongan tersebut masing-masing menggunakan akhiran -ana, -ena, dan -una.</p><p class="small muted">Bacalah wacana dengan cermat. Gunakan informasi pada wacana dan pemahaman dari materi yang telah dipelajari untuk menjawab soal nomor 1–15.</p></div><p class="muted">15 soal terdiri atas 6 pilihan ganda (opsi A–E), 3 pilihan ganda kompleks (pilih semua jawaban benar), 3 soal benar/salah (masing-masing berisi 3 pernyataan), dan 3 soal menjodohkan. Khusus nomor 15, terdapat 3 pasangan: alkana, alkena, dan alkuna. Jawab seluruh bagian kemudian kirim.</p><form id="finalForm" onsubmit="return false">${finalQs.map((q,i)=>finalQuestion(q,i)).join('')}<div class="panel" style="background:#f4f8ff;border:1px solid #cbd8f5">
+<label class="option" style="background:transparent;font-weight:800">
+<input type="checkbox" id="confirmReview" onchange="toggleFinalSubmit()">
+<span> Saya sudah memeriksa kembali jawaban saya dan menyatakan bahwa jawaban ini siap dikirim kepada guru.</span>
+</label>
+<p class="muted small">Centang kotak ini setelah selesai memeriksa seluruh jawaban. Tombol kirim akan aktif setelah kotak dicentang.</p>
+</div>
+<div class="actions"><span class="muted small">Pastikan semua soal terisi dan sudah diperiksa.</span><button id="finalSubmitBtn" onclick="submitFinal()" disabled>Kirim jawaban ke guru</button></div><div id="finalResult"></div></form>`}
+function shuffledNonIdentity(length){
+  const values=Array.from({length},(_,i)=>i);
+  if(length<2)return values;
+  let shuffled;
+  do{
+    shuffled=[...values];
+    for(let i=shuffled.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
+    }
+  }while(shuffled.every((value,index)=>value===index));
+  return shuffled;
+}
+function finalQuestion(q,i){if(q.t==='mc')return `<fieldset class="quizq"><legend>${q.q}</legend>${q.o.map((o,j)=>`<label class="option"><input type="radio" name="f${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}</fieldset>`;
+if(q.t==='complex')return `<fieldset class="quizq"><legend>${q.q} <span class="small muted">(Pilih semua jawaban benar)</span></legend>${q.o.map((o,j)=>`<label class="option"><input type="checkbox" name="f${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}</fieldset>`;
+if(q.t==='tf')return `<fieldset class="quizq"><legend>${q.q}</legend><table><tr><th>Pernyataan</th><th>Benar</th><th>Salah</th></tr>${q.o.map((o,j)=>`<tr><td>${o}</td><td><input type="radio" name="f${i}_${j}" value="true"></td><td><input type="radio" name="f${i}_${j}" value="false"></td></tr>`).join('')}</table></fieldset>`;
+const rowOrder=shuffledNonIdentity(q.pairs.length);
+const answerOrder=shuffledNonIdentity(q.pairs.length);
+return `<fieldset class="quizq"><legend>${q.q}</legend><p class="muted small">Pasangkan setiap soal dengan jawaban yang tepat. Urutan soal dan pilihan jawaban diacak.</p><table><tr><th>Soal</th><th>Pasangan yang tepat</th></tr>${rowOrder.map((j)=>`<tr><td>${q.pairs[j][0]}</td><td><select name="f${i}_${j}"><option value="">Pilih pasangan</option>${answerOrder.map((k,index)=>`<option value="${k}">${String.fromCharCode(65+index)}. ${q.pairs[k][1]}</option>`).join('')}</select></td></tr>`).join('')}</table></fieldset>`}
+function toggleFinalSubmit(){
+  const check=document.getElementById('confirmReview');
+  const button=document.getElementById('finalSubmitBtn');
+  if(button) button.disabled=!(check && check.checked);
+}
+
+function collectFinalAnswers(){
+  return finalQs.map((q,i)=>{
+    if(q.t==='mc'){
+      const v=document.querySelector(`input[name=f${i}]:checked`);
+      return {nomor:i+1,jenis:'Pilihan Ganda',jawaban:v?String.fromCharCode(65+(+v.value)):''};
+    }
+    if(q.t==='complex'){
+      const vals=[...document.querySelectorAll(`input[name=f${i}]:checked`)].map(x=>+x.value).sort((a,b)=>a-b);
+      return {nomor:i+1,jenis:'Pilihan Ganda Kompleks',jawaban:vals.map(v=>String.fromCharCode(65+v)).join(', ')};
+    }
+    if(q.t==='tf'){
+      return {nomor:i+1,jenis:'Benar/Salah',jawaban:q.o.map((_,j)=>{
+        const v=document.querySelector(`input[name=f${i}_${j}]:checked`);
+        return `${j+1}:${v?(v.value==='true'?'Benar':'Salah'):''}`;
+      }).join('; ')};
+    }
+    return {nomor:i+1,jenis:'Menjodohkan',jawaban:q.pairs.map((p,j)=>{
+      const v=document.querySelector(`select[name=f${i}_${j}]`).value;
+      return `${p[0]} → ${v===''?'':q.pairs[+v][1]}`;
+    }).join('; ')};
+  });
+}
+async function submitFinal(){
+  const button=document.getElementById('finalSubmitBtn');
+  const confirmation=document.getElementById('confirmReview');
+  if(!confirmation || !confirmation.checked){
+    document.getElementById('finalResult').innerHTML='<div class="feedback bad">Centang pernyataan bahwa Anda sudah memeriksa jawaban sebelum mengirim.</div>';
+    return;
+  }
+  let score=0,answered=true;
+  finalQs.forEach((q,i)=>{
+    if(q.t==='mc'){let v=document.querySelector(`input[name=f${i}]:checked`);if(!v)answered=false;else if(+v.value===q.a)score++}
+    if(q.t==='complex'){let v=[...document.querySelectorAll(`input[name=f${i}]:checked`)].map(x=>+x.value);if(v.length===0)answered=false;else if(v.length===q.a.length&&q.a.every(x=>v.includes(x)))score++}
+    if(q.t==='tf'){let vals=q.o.map((_,j)=>document.querySelector(`input[name=f${i}_${j}]:checked`));if(vals.some(x=>!x))answered=false;else if(vals.every((v,j)=>(v.value==='true')===q.a[j]))score++}
+    if(q.t==='match'){let vals=q.pairs.map((_,j)=>document.querySelector(`select[name=f${i}_${j}]`).value);if(vals.some(x=>x===''))answered=false;else if(vals.every((v,j)=>+v===q.a[j]))score++}
+  });
+  if(!answered){document.getElementById('finalResult').innerHTML='<div class="feedback bad">Masih ada bagian yang belum dijawab. Periksa kembali seluruh 15 soal.</div>';return}
+  if(!student){document.getElementById('finalResult').innerHTML='<div class="feedback bad">Identitas murid belum ditemukan. Silakan mulai kembali dari halaman awal.</div>';return}
+  if(!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.includes('TEMPEL_URL')){
+    document.getElementById('finalResult').innerHTML='<div class="feedback bad">Koneksi Google Sheets belum diatur. Guru perlu memasukkan URL Web App pada kode HTML.</div>';return;
+  }
+  const pct=Math.round(score/15*100);
+  const record={nama:student.nama,kelas:student.kelas,absen:student.absen,skor:score,total_soal:15,nilai:pct,tanggal:new Date().toISOString(),jawaban:collectFinalAnswers()};
+  if(button){button.disabled=true;button.textContent='Mengirim jawaban...';}
+  try{
+    await fetch(GOOGLE_SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(record)});
+    let records=JSON.parse(localStorage.getItem('hidrokarbonQuest_records')||'[]');
+    records=records.filter(x=>!(x.nama===student.nama&&x.kelas===student.kelas&&x.absen===student.absen));
+    records.push({nama:student.nama,kelas:student.kelas,absen:student.absen,score:score+'/15',nilai:pct,tanggal:new Date().toLocaleString('id-ID')});
+    localStorage.setItem('hidrokarbonQuest_records',JSON.stringify(records));
+    progress=9;save();renderMap();
+    document.getElementById('finalResult').innerHTML='<div class="panel"><div class="result">Jawaban Anda sudah tersimpan.</div><p>Terima kasih telah menyelesaikan tes formatif.</p></div>';
+    document.querySelectorAll('#finalForm input,#finalForm select').forEach(el=>el.disabled=true);
+  }catch(err){
+    if(button){button.disabled=false;button.textContent='Kirim jawaban ke guru';}
+    document.getElementById('finalResult').innerHTML='<div class="feedback bad">Pengiriman belum berhasil. Periksa koneksi internet, URL Web App, dan izin deployment, lalu coba kirim kembali.</div>';
+  }
+}
+function exportCSV(){let a=JSON.parse(localStorage.getItem('hidrokarbonQuest_records')||'[]');let csv='Nama,Kelas,Absen,Skor,Nilai,Tanggal\\n'+a.map(x=>[x.nama,x.kelas,x.absen,x.score,x.nilai,x.tanggal].map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\\n');let blob=new Blob(['\\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),ael=document.createElement('a');ael.href=url;ael.download='rekap-hasil-hidrokarbon.csv';ael.click();URL.revokeObjectURL(url)}
+</script></body></html>
